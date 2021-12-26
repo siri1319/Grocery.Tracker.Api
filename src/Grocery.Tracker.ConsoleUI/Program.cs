@@ -7,28 +7,40 @@ namespace Grocery.Tracker.ConsoleUI
     {
         static void Main(string[] args)
         {
-            List<string> groceryNames = new List<string>();
+            List<GroceryItem> groceries = new List<GroceryItem>();
             while (true)
             {
-                Console.WriteLine("Please enter grocery name:");
-                string groceryName = Console.ReadLine();
-                if (groceryName == "exit")
+                Console.WriteLine("Please enter grocery name:"); 
+                GroceryItem grocery = new GroceryItem();
+                grocery.Name = Console.ReadLine();
+                if (grocery.Name == "exit")
                 {
                     break;
                 }
-                groceryNames.Add(groceryName); 
+                groceries.Add(grocery);
             }
-                
-            PrintNames(groceryNames);
+              
+            PrintGroceries(groceries);
         }
 
-        static void PrintNames(List<string> items)
+        static void PrintGroceries(List<GroceryItem> items)
         {
-            foreach (string item in items)
+            foreach (GroceryItem item in items)
             {
-                Console.WriteLine(item); 
+                Console.WriteLine($"Name: {item.Name}. ExpiryDate: {item.ExpiryDate}"); 
             }
             
         }
+    }
+
+    class GroceryItem
+    {
+        public int Id;
+        public string Name;
+        public string Category;
+        public DateTime PurchaseDate;
+        public DateTime OpenDate;
+        public DateTime ExpiryDate;
+        public string Description;
     }
 }
