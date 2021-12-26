@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Grocery.Tracker.ConsoleUI
 {
@@ -6,27 +7,26 @@ namespace Grocery.Tracker.ConsoleUI
     {
         static void Main(string[] args)
         {
-            string[] groceryNames = new string[100];
-            var k = 0;
-            for (int i = 0; i < groceryNames.Length; i++)
+            List<string> groceryNames = new List<string>();
+            while (true)
             {
                 Console.WriteLine("Please enter grocery name:");
                 string groceryName = Console.ReadLine();
                 if (groceryName == "exit")
                 {
-                    k = i;
                     break;
                 }
-                groceryNames[i] = groceryName;
+                groceryNames.Add(groceryName); 
             }
-            PrintNames(groceryNames,k);
+                
+            PrintNames(groceryNames);
         }
 
-        static void PrintNames(string[] items,int z)
+        static void PrintNames(List<string> items)
         {
-            for (int i = 0; i < z; i++)
+            foreach (string item in items)
             {
-                Console.WriteLine(items[i]); 
+                Console.WriteLine(item); 
             }
             
         }
