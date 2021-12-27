@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Formats.Asn1;
 using System.Globalization;
+using Grocery.Tracker.Core;
 
 namespace Grocery.Tracker.ConsoleUI
 {
@@ -11,6 +12,7 @@ namespace Grocery.Tracker.ConsoleUI
         {
             List<GroceryItem> groceries = new List<GroceryItem>();
             int k = 1;
+            GroceryStorageService service = new GroceryStorageService();
             while (true)
             {
                 GroceryItem grocery = new GroceryItem();
@@ -34,8 +36,11 @@ namespace Grocery.Tracker.ConsoleUI
                 groceries.Add(grocery);
                 k++;
             }
-            PrintGroceries(groceries);
-            }
+            service.SaveGroceryItem(groceries);
+            
+            List<GroceryItem> allGroceries=service.GetGroceryItems();
+            PrintGroceries(allGroceries);
+        }
 
         static void PrintGroceries(List<GroceryItem> items)
         {
@@ -44,23 +49,7 @@ namespace Grocery.Tracker.ConsoleUI
                 Console.WriteLine(item.ToConsoleText());
             }
         }
-        class GroceryItem
-        {
-            public int Id;
-            public string Name;
-            public string Category;
-            public DateTime PurchaseDate;
-            public DateTime OpenDate;
-            public DateTime ExpiryDate;
-            public string Description;
-
-            public string ToConsoleText()
-            {
-                return
-                    $"Id: {this.Id} Name: {this.Name} Category: {this.Category} PurchaseDate: {this.PurchaseDate:dd/MM/yyyy} " +
-                    $"OpenDate: {this.OpenDate:dd/MM/yyyy} ExpiryDate: {this.ExpiryDate:dd/MM/yyyy} Description: {this.Description}";
-            }
-        }
+        
         
     }
 }

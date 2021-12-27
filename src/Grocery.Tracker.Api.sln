@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grocery.Tracker.ConsoleUI", "Grocery.Tracker.ConsoleUI\Grocery.Tracker.ConsoleUI.csproj", "{A0D6E014-C619-484B-82BD-07DBCE9D60AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grocery.Tracker.Core", "Grocery.Tracker.Core\Grocery.Tracker.Core.csproj", "{826727F8-168F-424D-AB49-490A9EE225C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{A0D6E014-C619-484B-82BD-07DBCE9D60AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0D6E014-C619-484B-82BD-07DBCE9D60AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0D6E014-C619-484B-82BD-07DBCE9D60AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{826727F8-168F-424D-AB49-490A9EE225C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{826727F8-168F-424D-AB49-490A9EE225C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{826727F8-168F-424D-AB49-490A9EE225C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{826727F8-168F-424D-AB49-490A9EE225C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
