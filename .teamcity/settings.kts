@@ -29,6 +29,10 @@ version = "2020.1"
 
 project {
 
+    params {
+        param("teamcity.ui.settings.readOnly", "true")
+    }
+
     buildType(BuildNetSolution)
 }
 
