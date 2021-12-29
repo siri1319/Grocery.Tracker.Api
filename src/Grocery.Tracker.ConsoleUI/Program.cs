@@ -23,16 +23,28 @@ namespace Grocery.Tracker.ConsoleUI
                 {
                     break;
                 }
+                
                 Console.WriteLine("Enter Category: ");
                 groceryItem.Category = Console.ReadLine();
+                
+                Console.WriteLine("Enter Quantity");
+                groceryItem.Quantity = Console.ReadLine();
+                
                 Console.WriteLine("Enter Purchased date(dd/mm/yyyy): ");
-                groceryItem.PurchaseDate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                string purchaseDateInput = Console.ReadLine();
+                groceryItem.PurchaseDate = DateTime.ParseExact(string.IsNullOrWhiteSpace(purchaseDateInput) ? "01/01/2021" : purchaseDateInput, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                
                 Console.WriteLine("Enter Open date(dd/mm/yyyy): ");
-                groceryItem.OpenDate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                string openDateInput = Console.ReadLine();
+                groceryItem.OpenDate = DateTime.ParseExact(string.IsNullOrWhiteSpace(openDateInput) ? "02/02/2022" : openDateInput, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                
                 Console.WriteLine("Enter Expiry date(dd/mm/yyyy): ");
-                groceryItem.ExpiryDate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                string expiryInput = Console.ReadLine();
+                groceryItem.ExpiryDate = DateTime.ParseExact(string.IsNullOrWhiteSpace(expiryInput) ? "31/12/2021" : expiryInput, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                
                 Console.WriteLine("Enter Description: ");
                 groceryItem.Description= Console.ReadLine();
+                
                 groceries.Add(groceryItem);
                 groceryIdCounter++;
             }
@@ -44,6 +56,7 @@ namespace Grocery.Tracker.ConsoleUI
 
         static void PrintGroceries(List<GroceryItem> items)
         {
+            
             foreach (GroceryItem item in items)
             {
                 Console.WriteLine(item.ToConsoleText());
