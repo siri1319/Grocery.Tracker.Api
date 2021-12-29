@@ -15,25 +15,25 @@ namespace Grocery.Tracker.ConsoleUI
             GroceryStorageService service = new GroceryStorageService();
             while (true)
             {
-                GroceryItem grocery = new GroceryItem();
-                grocery.Id = groceryIdCounter;
+                GroceryItem groceryItem = new GroceryItem();
+                groceryItem.Id = groceryIdCounter;
                 Console.WriteLine("Enter Grocery name: ");
-                grocery.Name = Console.ReadLine();
-                if (grocery.Name == "exit")
+                groceryItem.Name = Console.ReadLine();
+                if (groceryItem.Name == "exit")
                 {
                     break;
                 }
                 Console.WriteLine("Enter Category: ");
-                grocery.Category = Console.ReadLine();
+                groceryItem.Category = Console.ReadLine();
                 Console.WriteLine("Enter Purchased date(dd/mm/yyyy): ");
-                grocery.PurchaseDate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                groceryItem.PurchaseDate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 Console.WriteLine("Enter Open date(dd/mm/yyyy): ");
-                grocery.OpenDate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                groceryItem.OpenDate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 Console.WriteLine("Enter Expiry date(dd/mm/yyyy): ");
-                grocery.ExpiryDate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                groceryItem.ExpiryDate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 Console.WriteLine("Enter Description: ");
-                grocery.Description= Console.ReadLine();
-                groceries.Add(grocery);
+                groceryItem.Description= Console.ReadLine();
+                groceries.Add(groceryItem);
                 groceryIdCounter++;
             }
             service.SaveGroceryItem(groceries);
