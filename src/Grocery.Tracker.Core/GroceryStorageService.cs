@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using Dapper;
 
 namespace Grocery.Tracker.Core
 {
@@ -12,6 +14,8 @@ namespace Grocery.Tracker.Core
 
         public List<GroceryItem> GetGroceryItems()
         {
+            var connection =new SqlConnection(@"Server=localhost,1401;Database=GroceryTracker;User=sa;Password=P@ssword;");
+            var result = connection.Query("select * from GroceryItems");
             return groceryItems;
         }
     }

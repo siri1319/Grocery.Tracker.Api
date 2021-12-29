@@ -10,9 +10,10 @@ namespace Grocery.Tracker.ConsoleUI
     {
         static void Main()
         {
+            GroceryStorageService service = new GroceryStorageService();
+            List<GroceryItem> test=service.GetGroceryItems();
             List<GroceryItem> groceries = new List<GroceryItem>();
             int groceryIdCounter = 1;
-            GroceryStorageService service = new GroceryStorageService();
             while (true)
             {
                 GroceryItem groceryItem = new GroceryItem();
