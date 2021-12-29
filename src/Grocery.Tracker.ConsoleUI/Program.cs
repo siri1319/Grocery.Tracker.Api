@@ -11,12 +11,12 @@ namespace Grocery.Tracker.ConsoleUI
         static void Main()
         {
             List<GroceryItem> groceries = new List<GroceryItem>();
-            int k = 1;
+            int groceryIdCounter = 1;
             GroceryStorageService service = new GroceryStorageService();
             while (true)
             {
                 GroceryItem grocery = new GroceryItem();
-                grocery.Id = k;
+                grocery.Id = groceryIdCounter;
                 Console.WriteLine("Enter Grocery name: ");
                 grocery.Name = Console.ReadLine();
                 if (grocery.Name == "exit")
@@ -25,16 +25,16 @@ namespace Grocery.Tracker.ConsoleUI
                 }
                 Console.WriteLine("Enter Category: ");
                 grocery.Category = Console.ReadLine();
-                Console.WriteLine("Enter Purchased date: ");
+                Console.WriteLine("Enter Purchased date(dd/mm/yyyy): ");
                 grocery.PurchaseDate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                Console.WriteLine("Enter Open date: ");
+                Console.WriteLine("Enter Open date(dd/mm/yyyy): ");
                 grocery.OpenDate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                Console.WriteLine("Enter Expiry date: ");
+                Console.WriteLine("Enter Expiry date(dd/mm/yyyy): ");
                 grocery.ExpiryDate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 Console.WriteLine("Enter Description: ");
                 grocery.Description= Console.ReadLine();
                 groceries.Add(grocery);
-                k++;
+                groceryIdCounter++;
             }
             service.SaveGroceryItem(groceries);
             
