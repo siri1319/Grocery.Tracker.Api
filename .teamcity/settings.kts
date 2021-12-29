@@ -62,6 +62,16 @@ object BuildNetSolution : BuildType({
             name = "Push Docker image to Docker hub"
             scriptContent = "docker push siri8691/grocery-tracker-console:%build.counter%"
         }
+        script {
+            name = "send message to TV"
+            scriptContent = """
+                curl --location --request POST 'http://192.168.1.127:3030/alert' \
+                --header 'Content-Type: application/json' \
+                --data-raw '{
+                    "message": "hello"
+                }'
+            """.trimIndent()
+        }
     }
 
     triggers {
