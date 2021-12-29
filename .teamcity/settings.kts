@@ -68,7 +68,7 @@ object BuildNetSolution : BuildType({
                 curl --location --request POST 'http://192.168.1.127:3030/alert' \
                 --header 'Content-Type: application/json' \
                 --data-raw '{
-                    "message": "hello"
+                    "message": "Successfully published GroceryTracker Docker image"
                 }'
             """.trimIndent()
         }
