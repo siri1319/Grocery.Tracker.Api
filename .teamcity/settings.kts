@@ -76,6 +76,7 @@ object BuildNetSolution : BuildType({
 
     triggers {
         vcs {
+            branchFilter = "+:main"
         }
     }
 })
