@@ -56,11 +56,14 @@ object BuildNetSolution : BuildType({
         }
         script {
             name = "Build Docker Image"
-            scriptContent = "docker build -t siri8691/grocery-tracker-console:%build.counter% ."
+            scriptContent = "docker build -t siri8691/grocery-tracker-console:%build.counter% siri8691/grocery-tracker-console:latest ."
         }
         script {
             name = "Push Docker image to Docker hub"
-            scriptContent = "docker push siri8691/grocery-tracker-console:%build.counter%"
+            scriptContent = """
+                docker push siri8691/grocery-tracker-console:%build.counter%"
+                docker push siri8691/grocery-tracker-console:latest
+            """.trimIndent()
         }
         script {
             name = "send message to TV"
