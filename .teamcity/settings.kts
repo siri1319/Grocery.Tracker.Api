@@ -61,7 +61,7 @@ object BuildNetSolution : BuildType({
         script {
             name = "Push Docker image to Docker hub"
             scriptContent = """
-                docker push siri8691/grocery-tracker-console:%build.counter%"
+                docker push siri8691/grocery-tracker-console:%build.counter%
                 docker push siri8691/grocery-tracker-console:latest
             """.trimIndent()
         }
