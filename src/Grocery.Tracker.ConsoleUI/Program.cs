@@ -17,7 +17,7 @@ namespace Grocery.Tracker.ConsoleUI
                 GroceryItem groceryItem = new GroceryItem();
                 Console.WriteLine("Enter Grocery name: ");
                 groceryItem.Name = Console.ReadLine();
-                if (groceryItem.Name == "exit")
+                if (groceryItem.Name == "@@")
                 {
                     break;
                 }

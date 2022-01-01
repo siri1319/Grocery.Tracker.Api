@@ -8,7 +8,7 @@ namespace Grocery.Tracker.Core
 {
     public class GroceryStorageService
     {
-        private string path = "/Users/sateesh.pagolu/code/lab/temp/Groceries.csv";
+        private string path = "/var/lib/GroceryTrackerApp/Groceries.csv";
 
         public void SaveGroceryItem(List<GroceryItem> newGroceries)
         {
