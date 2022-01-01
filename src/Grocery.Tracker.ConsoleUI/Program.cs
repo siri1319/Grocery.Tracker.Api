@@ -11,12 +11,10 @@ namespace Grocery.Tracker.ConsoleUI
         static void Main()
         {
             List<GroceryItem> groceries = new List<GroceryItem>();
-            int groceryIdCounter = 1;
             GroceryStorageService service = new GroceryStorageService();
             while (true)
             {
                 GroceryItem groceryItem = new GroceryItem();
-                groceryItem.Id = groceryIdCounter;
                 Console.WriteLine("Enter Grocery name: ");
                 groceryItem.Name = Console.ReadLine();
                 if (groceryItem.Name == "exit")
@@ -46,7 +44,6 @@ namespace Grocery.Tracker.ConsoleUI
                 groceryItem.Description= Console.ReadLine();
                 
                 groceries.Add(groceryItem);
-                groceryIdCounter++;
             }
             service.SaveGroceryItem(groceries);
             
