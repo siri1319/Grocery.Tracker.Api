@@ -48,7 +48,7 @@ object BuildNetSolution : BuildType({
             name = "Compile Solution"
             scriptContent = "dotnet build src/Grocery.Tracker.Api.sln"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerImage = "mcr.microsoft.com/dotnet/sdk:5.0-focal-arm32v7"
+            dockerImage = "mcr.microsoft.com/dotnet/sdk:5.0-focal"
         }
         script {
             name = "Log in to Docker Hub Registry"
