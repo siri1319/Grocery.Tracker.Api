@@ -52,7 +52,7 @@ object BuildNetSolution : BuildType({
         }
         script {
             name = "Log in to Docker Hub Registry"
-            scriptContent = "cat /home/pi/secret/docker-hub-dwija-pwd.txt | docker login --username siri8691 --password-stdin"
+            scriptContent = "docker login --username siri8691 --password credentialsJSON:653d0dd1-57f3-44a1-b816-831a756f7724"
         }
         script {
             name = "Build Docker Image"
