@@ -56,7 +56,7 @@ object BuildNetSolution : BuildType({
         }
         script {
             name = "Log in to Docker Hub Registry"
-            scriptContent = "docker login --username siri8691@gmail.com --password %dockerHubPassword%"
+            scriptContent = "docker login --username siri8691 --password %dockerHubPassword%"
         }
         script {
             name = "Build Docker Image"
