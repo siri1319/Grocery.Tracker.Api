@@ -9,3 +9,5 @@ Run below command to start a container
 ```
 docker run -it --name <container-name> -v <csv-directory-path> :/var/lib/GroceryTrackerApp grocery-tracker-console:<tagname>
 ```
+## Architecture
+![Alt text](Images/GroceryTrackerArchitecture.jpg?raw=true "Architecture")
