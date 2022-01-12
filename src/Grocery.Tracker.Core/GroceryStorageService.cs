@@ -9,7 +9,7 @@ namespace Grocery.Tracker.Core
 {
     public class GroceryStorageService
     {
-        private string path = Environment.GetEnvironmentVariable("CSV_PATH", EnvironmentVariableTarget.User);
+        private string path = Environment.GetEnvironmentVariable("CSV_PATH");
 
 
         public void SaveGroceryItem(List<GroceryItem> newGroceries)

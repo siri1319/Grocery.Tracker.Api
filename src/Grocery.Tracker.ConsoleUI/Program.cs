@@ -59,10 +59,10 @@ namespace Grocery.Tracker.ConsoleUI
                                 PrintGroceries(groceries);
                                 break;
                             }
-                            
 
 
                         }
+                        service.SaveGroceryItem(groceries);
                         break;
                     case 2:
                         Console.WriteLine("You opted to View Groceries");
@@ -81,7 +81,7 @@ namespace Grocery.Tracker.ConsoleUI
                 }
 
                 
-               }
+        }
 
         static void PrintGroceries(List<GroceryItem> items)
         {
