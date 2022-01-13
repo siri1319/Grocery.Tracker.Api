@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -8,7 +9,8 @@ namespace Grocery.Tracker.Core
 {
     public class GroceryStorageService
     {
-        private string path = "/var/lib/GroceryTrackerApp/Groceries.csv";
+        private string path = Environment.GetEnvironmentVariable("CSV_PATH");
+
 
         public void SaveGroceryItem(List<GroceryItem> newGroceries)
         {
@@ -20,19 +22,32 @@ namespace Grocery.Tracker.Core
             }
 
             using (var writer = new StreamWriter(path))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
-                csv.WriteRecords(allGroceries);
+                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                {
+                    csv.WriteRecords(allGroceries);
+                }
             }
         }
 
         public List<GroceryItem> GetGroceryItems()
         {
-            using (var reader = new StreamReader(path))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            if (File.Exists(path))
             {
-                var records = csv.GetRecords<GroceryItem>();
-                return records.ToList();
+                using (var reader = new StreamReader(path))
+                {
+                    using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                    {
+                        var records = csv.GetRecords<GroceryItem>();
+                        return records.ToList();
+                    }
+
+                }
+                
+            }
+            else
+            {
+                return new List<GroceryItem>();
             }
         }
     }
