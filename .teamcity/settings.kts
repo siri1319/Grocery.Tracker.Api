@@ -37,7 +37,7 @@ project {
 }
 
 object BuildNetSolution : BuildType({
-    name = "Build .Net Solution"
+    name = "Build & Publish Docker Image"
     
     params {
        password("dockerHubPassword", "credentialsJSON:653d0dd1-57f3-44a1-b816-831a756f7724", display = ParameterDisplay.HIDDEN)
