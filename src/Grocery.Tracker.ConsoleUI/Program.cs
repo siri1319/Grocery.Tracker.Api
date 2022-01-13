@@ -12,19 +12,22 @@ namespace Grocery.Tracker.ConsoleUI
         {
                 List<GroceryItem> groceries = new List<GroceryItem>();
                 GroceryStorageService service = new GroceryStorageService();
-                
-                List<GroceryItem> allGroceries = service.GetGroceryItems();
+               
+
+            while (true)
+            {
+
                 int option = GetMenuSelectionFromUser();
                 switch (option)
                 {
-               
+
                     case 1:
                         while (true)
                         {
                             GroceryItem groceryItem = new GroceryItem();
                             Console.WriteLine("Enter Grocery name: ");
                             groceryItem.Name = Console.ReadLine();
-                            
+
                             Console.WriteLine("Enter Category: ");
                             groceryItem.Category = Console.ReadLine();
 
@@ -45,27 +48,26 @@ namespace Grocery.Tracker.ConsoleUI
 
                             Console.WriteLine("Enter Description: ");
                             groceryItem.Description = Console.ReadLine();
-                            
+
                             groceries.Add(groceryItem);
                             
-                            service.SaveGroceryItem(groceries);
-                            
-
                             Console.WriteLine("Do you want to continue to add groceries yes/no");
                             string val = Console.ReadLine();
                             if (val == "no")
                             {
+                                
                                 Console.WriteLine("Successfully added the following groceries");
                                 PrintGroceries(groceries);
+                                
                                 break;
                             }
-
-
+                            
                         }
                         service.SaveGroceryItem(groceries);
                         break;
                     case 2:
                         Console.WriteLine("You opted to View Groceries");
+                        List<GroceryItem> allGroceries = service.GetGroceryItems();
                         PrintGroceries(allGroceries);
                         break;
                     case 3:
@@ -74,13 +76,18 @@ namespace Grocery.Tracker.ConsoleUI
                     case 4:
                         Console.WriteLine("You opted to Delete Groceries");
                         break;
-                    case 5:
-                        Console.WriteLine("Good Bye!!!");
-                        break;
+                    //case 5:
+                    //    Console.WriteLine("Good Bye!!!");
+                    //    break;
 
                 }
-
+                if (option == 5)
+                {
+                    Console.WriteLine("Good Bye!!!");
+                    break;
+                }
                 
+            }   
         }
 
         static void PrintGroceries(List<GroceryItem> items)
