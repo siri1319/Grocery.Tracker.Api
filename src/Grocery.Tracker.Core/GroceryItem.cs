@@ -9,6 +9,8 @@ namespace Grocery.Tracker.Core
             Id = Guid.NewGuid();
         }
 
+       
+
         public Guid Id { get; }
         public string Name { get; set; }
         public string Category { get; set; }

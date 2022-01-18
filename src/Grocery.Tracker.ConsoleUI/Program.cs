@@ -67,8 +67,18 @@ namespace Grocery.Tracker.ConsoleUI
                         break;
                     case 2:
                         Console.WriteLine("You opted to View Groceries");
+                        Console.WriteLine("Enter the grocery name to view:");
+                        string groceryName = Console.ReadLine();
                         List<GroceryItem> allGroceries = service.GetGroceryItems();
-                        PrintGroceries(allGroceries);
+                        List<GroceryItem> selectedGroceries = new List<GroceryItem>();
+                        foreach (GroceryItem item in allGroceries)
+                        {
+                            if(item.Name == groceryName)
+                            {
+                                selectedGroceries.Add(item);
+                            }
+                        }
+                        PrintGroceries(selectedGroceries);
                         break;
                     case 3:
                         Console.WriteLine("You opted to Update Groceries");
