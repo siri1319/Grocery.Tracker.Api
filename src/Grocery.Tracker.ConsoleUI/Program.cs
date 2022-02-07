@@ -10,9 +10,9 @@ namespace Grocery.Tracker.ConsoleUI
     {
         static void Main()
         {
-                List<GroceryItem> groceries = new List<GroceryItem>();
-                GroceryStorageService service = new GroceryStorageService();
-               
+            List<GroceryItem> groceries = new List<GroceryItem>();
+            GroceryStorageService service = new GroceryStorageService();
+            List<GroceryItem> allGroceries = service.GetGroceryItems();
 
             while (true)
             {
@@ -55,7 +55,7 @@ namespace Grocery.Tracker.ConsoleUI
                             string val = Console.ReadLine();
                             if (val == "no")
                             {
-                                
+                                service.AppendGroceryItem(groceries);
                                 Console.WriteLine("Successfully added the following groceries");
                                 PrintGroceries(groceries);
                                 
@@ -63,28 +63,55 @@ namespace Grocery.Tracker.ConsoleUI
                             }
                             
                         }
-                        service.SaveGroceryItem(groceries);
+                        //service.AppendGroceryItem(groceries);
                         break;
                     case 2:
                         Console.WriteLine("You opted to View Groceries");
-                        Console.WriteLine("Enter the grocery name to view:");
+                        Console.WriteLine("Enter the grocery name/all to view:");
                         string groceryName = Console.ReadLine();
-                        List<GroceryItem> allGroceries = service.GetGroceryItems();
+                        
                         List<GroceryItem> selectedGroceries = new List<GroceryItem>();
-                        foreach (GroceryItem item in allGroceries)
+                        if (groceryName != "all")
                         {
-                            if(item.Name == groceryName)
+                            foreach (GroceryItem item in allGroceries)
                             {
-                                selectedGroceries.Add(item);
+                                if (item.Name == groceryName)
+                                {
+                                    selectedGroceries.Add(item);
+                                }
                             }
+                            PrintGroceries(selectedGroceries);
+                            
                         }
-                        PrintGroceries(selectedGroceries);
+                        else
+                        {
+                            PrintGroceries(allGroceries);
+                        }
                         break;
                     case 3:
                         Console.WriteLine("You opted to Update Groceries");
                         break;
                     case 4:
                         Console.WriteLine("You opted to Delete Groceries");
+                        Console.WriteLine("Enter the grocery Id to delete:");
+                        String groceryID = Console.ReadLine();
+                        //List<GroceryItem> allGroceries = service.GetGroceryItems();
+                        //int listLength = allGroceries.Count;
+                        for (int i = 0; i < allGroceries.Count; i++)
+                        {
+                            if (allGroceries[i].Id == Guid.Parse(groceryID))
+                            {
+                                allGroceries.RemoveAt(i);
+                                break;
+                            }
+                        }
+                        ////List<GroceryItem> deletedGroceries = new List<GroceryItem>();
+                        ////foreach (GroceryItem item in allGroceries)
+                        ////{
+
+                        ////}
+                        PrintGroceries(allGroceries);
+                        service.WriteToCSV(allGroceries);
                         break;
                     //case 5:
                     //    Console.WriteLine("Good Bye!!!");

@@ -12,7 +12,7 @@ namespace Grocery.Tracker.Core
         private string path = Environment.GetEnvironmentVariable("CSV_PATH");
 
 
-        public void SaveGroceryItem(List<GroceryItem> newGroceries)
+        public void AppendGroceryItem(List<GroceryItem> newGroceries)
         {
             List<GroceryItem> allGroceries = new List<GroceryItem>();
             if (File.Exists(path))
@@ -21,13 +21,8 @@ namespace Grocery.Tracker.Core
                 allGroceries.AddRange(newGroceries);
             }
 
-            using (var writer = new StreamWriter(path))
-            {
-                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-                {
-                    csv.WriteRecords(allGroceries);
-                }
-            }
+            WriteToCSV(allGroceries);
+
         }
 
         public List<GroceryItem> GetGroceryItems()
@@ -48,6 +43,17 @@ namespace Grocery.Tracker.Core
             else
             {
                 return new List<GroceryItem>();
+            }
+        }
+
+        public void WriteToCSV(List<GroceryItem> newGroceries)
+        {
+            using (var writer = new StreamWriter(path))
+            {
+                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                {
+                    csv.WriteRecords(newGroceries);
+                }
             }
         }
     }
