@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Formats.Asn1;
-using System.Globalization; 
+using System.Globalization;
+using System.IO;
+using Dapper;
 using Grocery.Tracker.Core;
+using Microsoft.Data.Sqlite;
 
 namespace Grocery.Tracker.ConsoleUI
 {
@@ -13,10 +16,10 @@ namespace Grocery.Tracker.ConsoleUI
             List<GroceryItem> groceries = new List<GroceryItem>();
             GroceryStorageService service = new GroceryStorageService();
             List<GroceryItem> allGroceries = service.GetGroceryItems();
-
+            //GroceryStorageService.CreateFile();
             while (true)
             {
-
+                
                 int option = GetMenuSelectionFromUser();
                 switch (option)
                 {
@@ -94,7 +97,7 @@ namespace Grocery.Tracker.ConsoleUI
                     case 4:
                         Console.WriteLine("You opted to Delete Groceries");
                         Console.WriteLine("Enter the grocery Id to delete:");
-                        String groceryID = Console.ReadLine();
+                        string groceryID = Console.ReadLine();
                         //List<GroceryItem> allGroceries = service.GetGroceryItems();
                         //int listLength = allGroceries.Count;
                         for (int i = 0; i < allGroceries.Count; i++)
@@ -135,6 +138,7 @@ namespace Grocery.Tracker.ConsoleUI
                 Console.WriteLine(item.ToConsoleText());
             }
         }
+        
         static int GetMenuSelectionFromUser()
         {
             Console.WriteLine("*******************************");

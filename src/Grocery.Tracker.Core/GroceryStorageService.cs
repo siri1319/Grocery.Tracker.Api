@@ -4,13 +4,14 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using CsvHelper;
+using Dapper;
+using Microsoft.Data.Sqlite;
 
 namespace Grocery.Tracker.Core
 {
     public class GroceryStorageService
     {
         private string path = Environment.GetEnvironmentVariable("CSV_PATH");
-
 
         public void AppendGroceryItem(List<GroceryItem> newGroceries)
         {
@@ -56,5 +57,15 @@ namespace Grocery.Tracker.Core
                 }
             }
         }
+        //public static void CreateFile()
+        //{
+        //    var dbFilePath = "D:\\Sri\\poc\\Groceries.sqlite";
+        //    using var connection = new SqliteConnection($"Data Source='{dbFilePath}'");
+        //    if (!File.Exists(dbFilePath))
+        //    {
+        //        File.Create(dbFilePath);
+        //        connection.Execute("Create Table Groceries (" + "Id varchar(50) NOT NULL," + "Name varchar(100) NOT NULL," + "Category varchar(20)," + "Quantity varchar(20) NOT NULL," + "PurchaseDate text," + "OpenDate text," + "ExpiryDate text," + "Description varchar(1000)," + ")");
+        //    }
+        //}
     }
 }
