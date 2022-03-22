@@ -48,12 +48,12 @@ object BuildNetSolution : BuildType({
     }
 
     steps {
-        script {
+        /*script {
             name = "Compile Solution"
             scriptContent = "dotnet build src/Grocery.Tracker.Api.sln"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerImage = "mcr.microsoft.com/dotnet/sdk:5.0-focal"
-        }
+        }*/
         script {
             name = "Log in to Docker Hub Registry"
             scriptContent = "docker login --username siri8691 --password %dockerHubPassword%"
